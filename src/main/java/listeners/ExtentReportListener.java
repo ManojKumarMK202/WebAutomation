@@ -41,7 +41,7 @@ public final class ExtentReportListener implements ISuiteListener, IInvokedMetho
             String getClassName = testResult.getTestClass().getName().split("\\.")[1];
             log.error("Test class name : " + getClassName + " Test method name : " + getMethodName + " got failed");
             log.error(Arrays.toString(testResult.getThrowable().getStackTrace()));
-            ExtentReportHelper.getExtentTestThreadLocal().pass("Value entered", MediaEntityBuilder.createScreenCaptureFromBase64String(ExtentReportManager.getBase64Image()).build());
+            ExtentReportHelper.getExtentTestThreadLocal().fail("Value entered", MediaEntityBuilder.createScreenCaptureFromBase64String(ExtentReportManager.getBase64Image()).build());
         }
     }
 }

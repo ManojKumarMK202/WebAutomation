@@ -18,7 +18,7 @@ public class ExtentLogAppender extends AppenderBase<ILoggingEvent> {
 
         switch (iLoggingEvent.getLevel().toInt()) {
                 case Level.DEBUG_INT:
-//                    extentTest.pass(log);
+                    extentTest.pass(log);
                     return;
                 case Level.ERROR_INT:
                     extentTest.fail(log);

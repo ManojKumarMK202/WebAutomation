@@ -13,8 +13,10 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import utils.ConfigFileManager;
 
+import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.time.Duration;
 import java.util.Objects;
 
@@ -36,7 +38,7 @@ public class BrowserDriver {
 //        driver.remove();
 //    }Moved to BrowserDriverManagerClass
 
-    public static void initDriver() throws MalformedURLException {
+    public static void initDriver() throws Exception {
         /*Condition added so that no 2 instances cannot be launched */
 //        if (webDriver == null) {
         /*
@@ -96,12 +98,14 @@ public class BrowserDriver {
         return webDriver;
     }
 
-    private static WebDriver getRemoteWebDriver(String browser) throws MalformedURLException {
+    private static WebDriver getRemoteWebDriver(String browser) throws Exception
+    {
         Capabilities capabilities;
         if (browser.equalsIgnoreCase("chrome"))
             capabilities = new ChromeOptions();
         else
             capabilities = new FirefoxOptions();
-        return new RemoteWebDriver(new URL(configFileManager.getProperty(ConfigConstants.GRID_URL)), capabilities);
+        String remoteUrl = String.format(configFileManager.getProperty(ConfigConstants.GRID_URL), InetAddress.getLocalHost().getHostAddress());
+        return new RemoteWebDriver(new URL(remoteUrl), capabilities);
     }
 }

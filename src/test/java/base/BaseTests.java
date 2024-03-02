@@ -28,12 +28,13 @@ public class BaseTests {
     }
 
     @BeforeTest(alwaysRun = true)
-    @Parameters({"browser", "hub"})
-    protected void setUpBT(@Optional String browser, @Optional String remoteAddress) {
+    @Parameters({"browser"})
+    protected void setUpBT(@Optional String browser) {
         log.info("setUpBT is executing");
-        System.out.println(browser+" "+remoteAddress);
-        BrowserDriver.setBrowser(browser);
-        BrowserDriver.setHub(remoteAddress);
+        System.out.println(System.getProperty("browser")+"  "+System.getProperty("hub")+" "+System.getProperty("gridExecution"));
+        String webBrowser = System.getProperty("browser")==null ? browser: System.getProperty("browser");
+        BrowserDriver.setBrowser(webBrowser);
+        BrowserDriver.setHub(System.getProperty("hub"));
     }
 
     @BeforeMethod(alwaysRun = true)

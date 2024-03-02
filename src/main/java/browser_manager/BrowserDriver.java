@@ -62,7 +62,8 @@ public class BrowserDriver {
 //            else
 //                webDriver = new ChromeDriver();
             /* In order to specify local or docker execution get local get remote driver methods created*/
-            if(Boolean.parseBoolean(configFileManager.getProperty(ConfigConstants.GRID_EXECUTION)))
+            boolean execution = Boolean.parseBoolean(System.getProperty("gridExecution")== null? configFileManager.getProperty(ConfigConstants.GRID_EXECUTION):System.getProperty("gridExecution"));
+            if(execution)
                 webDriver = getRemoteWebDriver(browser);
             else
                 webDriver = getLocalDriver(browser);

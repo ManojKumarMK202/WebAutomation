@@ -129,6 +129,11 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
+                    <systemPropertyVariables>
+                        <browser>chrome</browser>
+                        <gridExecution>false</gridExecution>
+                        <hub>localhost</hub>
+                    </systemPropertyVariables>
                     <suiteXmlFiles>
                         <file>testng.xml</file>
                     </suiteXmlFiles>

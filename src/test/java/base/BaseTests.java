@@ -28,9 +28,10 @@ public class BaseTests {
     }
 
     @BeforeTest(alwaysRun = true)
-    @Parameters("browser")
+    @Parameters({"browser", "hub"})
     protected void setUpBT(@Optional String browser, @Optional String remoteAddress) {
         log.info("setUpBT is executing");
+        System.out.println(browser+" "+remoteAddress);
         BrowserDriver.setBrowser(browser);
         BrowserDriver.setHub(remoteAddress);
     }

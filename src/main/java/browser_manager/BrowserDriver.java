@@ -105,7 +105,9 @@ public class BrowserDriver {
             capabilities = new ChromeOptions();
         else
             capabilities = new FirefoxOptions();
-        String remoteUrl = String.format(configFileManager.getProperty(ConfigConstants.GRID_URL), InetAddress.getLocalHost().getHostAddress());
+        String host = System.getProperty("host", InetAddress.getLocalHost().getHostAddress());
+        String remoteUrl = String.format(configFileManager.getProperty(ConfigConstants.GRID_URL), host);
+        System.out.println(remoteUrl);
         return new RemoteWebDriver(new URL(remoteUrl), capabilities);
     }
 }

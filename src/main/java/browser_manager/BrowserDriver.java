@@ -25,6 +25,7 @@ public class BrowserDriver {
 
     private static ConfigFileManager configFileManager = ConfigFileManager.getInstance(FilePath.COMMON_DATA);
     private static ThreadLocal<String> webBrowser = new ThreadLocal<>();
+    private static ThreadLocal<String> remoteAddress = new ThreadLocal<>();
 //    private static WebDriver webDriver;
 //    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 //    public static WebDriver getDriver() {
@@ -86,6 +87,10 @@ public class BrowserDriver {
         webBrowser.set(browser);
     }
 
+    public static void setHub(String browser){
+        remoteAddress.set(browser);
+    }
+
     private static WebDriver getLocalDriver(String browser) {
         WebDriver webDriver = null;
         log.info("Browser was set to "+ browser);
@@ -105,7 +110,7 @@ public class BrowserDriver {
             capabilities = new ChromeOptions();
         else
             capabilities = new FirefoxOptions();
-        String host = System.getProperty("host", InetAddress.getLocalHost().getHostAddress());
+        String host = remoteAddress.get();
         String remoteUrl = String.format(configFileManager.getProperty(ConfigConstants.GRID_URL), host);
         System.out.println(remoteUrl);
         return new RemoteWebDriver(new URL(remoteUrl), capabilities);

@@ -13,12 +13,14 @@
     </listeners>
     <test verbose="2" thread-count="2" preserve-order="true" name="D:/WebAutomation">
         <parameter name="browser" value="chrome"></parameter>
+        <parameter name="hub" value="localhost"></parameter>
         <classes>
             <class name="tests.HomePageTests"></class>
         </classes>
     </test>
     <test verbose="2" thread-count="2" preserve-order="true" name="D:/WebAutomation1">
         <parameter name="browser" value="chrome"></parameter>
+        <parameter name="hub" value="localhost"></parameter>
         <classes>
             <class name="tests.LoginTests"></class>
         </classes>

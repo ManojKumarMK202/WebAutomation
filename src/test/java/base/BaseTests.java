@@ -28,10 +28,13 @@ public class BaseTests {
     }
 
     @BeforeTest(alwaysRun = true)
-    @Parameters("browser")
+    @Parameters({"browser"})
     protected void setUpBT(@Optional String browser) {
         log.info("setUpBT is executing");
-        BrowserDriver.setBrowser(browser);
+        System.out.println(System.getProperty("browser")+"  "+System.getProperty("hub")+" "+System.getProperty("gridExecution"));
+        String webBrowser = System.getProperty("browser")==null ? browser: System.getProperty("browser");
+        BrowserDriver.setBrowser(webBrowser);
+        BrowserDriver.setHub(System.getProperty("hub"));
     }
 
     @BeforeMethod(alwaysRun = true)

@@ -10,4 +10,5 @@ ENTRYPOINT java \
             -Dhub=${HUB} \
             -cp 'libs/*' \
             org.testng.TestNG \
-            -threadcount ${THREADCOUNT} ./{TEST_SUITE}
+            -threadcount ${THREADCOUNT} \
+            ${TEST_SUITE}

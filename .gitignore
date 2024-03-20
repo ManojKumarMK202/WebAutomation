@@ -1,3 +1,6 @@
 .idea
+.idea/**
 /.class
 execution.log
+*/target/**
+target/**

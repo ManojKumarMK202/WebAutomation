@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build jar') {
+            steps {
+                sh "mvn clean -DskipTests"
+            }
+        }
+
+        stage('Build Image') {
+            steps {
+                sh "docker build -t=manojhonda691/docker-web-automation ."
+            }
+        }
+
+        stage('Build Image') {
+            steps {
+                sh "docker build -t=manojhonda691/docker-web-automation ."
+            }
+        }
+    }
+}

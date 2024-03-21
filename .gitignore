@@ -1,6 +1,7 @@
 .idea
-.idea/**
+*/.idea/**
 /.class
 execution.log
 */target/**
 target/**
+**.iml
